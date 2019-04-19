@@ -1,2 +1,2 @@
-# findconcerts
+# findyourconcerts
 Find concerts around you
