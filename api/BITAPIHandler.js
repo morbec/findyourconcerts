@@ -48,7 +48,15 @@ class BITAPIHandler {
     return axios
       .get(queryURL)
       .then(response => {
-        return response.data;
+        const { data } = response;
+        data.forEach(event => {
+          const date = new Date(event.datetime).toString().split(` `);
+          const formattedDate = date.splice(1, 2)
+        
+          event.formattedDate = [formattedDate[0].toUpperCase(), formattedDate[1]];
+        })
+
+        return data;
       })
       .catch(err => console.error('ERROR: ', err));
   }

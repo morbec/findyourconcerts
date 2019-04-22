@@ -1,8 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;;
 }
 
 a {
   color: #00B7FF;
 }
+
+// .artist-search-container {
+//   background-color: #acbdba;
+//   width: 100vw;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+
+// .artist-search-name {
+//   background-color: #f7fff6;
+//   width: 100vw;
+//   text-align: center;
+// }
+
+// .event-container {
+//   background-color: #f7fff6;
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: center;
+//   width: 60%;
+//   border-bottom: 1px solid #acbdba;
+// }
+
+// .event-container-date {
+//   padding-left: 10px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
+// .event-container-date p{
+//   color: #ff715b;
+// }
+
+
+// .event-container-venue {
+//   width: 33%;
+//   text-align: left;
+// }
+
+// .event-container-location {
+//   padding-right: 10px;
+//   width: 33%;
+//   text-align: right;
+// }
+
+// .event-btn {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: 1px solid #ff715b;
+//   height: 50px;
+//   width: 150px;
+// }
+
+// .event-btn a {
+//   text-decoration: none;
+//   color:#ff715b;
+// }
+
+

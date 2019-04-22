@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif; }
 
 a {
   color: #00B7FF; }
