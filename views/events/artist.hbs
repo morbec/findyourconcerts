@@ -1,1 +1,9 @@
-artist
+<div class="artist-search-name">
+  <h1>Katatonia's events</h1>
+</div>
+
+<div class="artist-search-container">
+  {{#each events}}
+  {{> eventContainer this}}
+  {{/each}}
+</div>
