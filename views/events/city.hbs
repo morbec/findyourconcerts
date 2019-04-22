@@ -1,1 +1,10 @@
-city
+<h1>Events </h1>
+
+{{#each events}}
+<p>{{this.formattedDate}}</p>
+<p>{{this.name}}</p>
+<p>{{this.venueName}}</p>
+<p>
+  <a href="{{this.url}}" target="_blank">Tickets</a>
+</p>
+{{/each}}

@@ -13,10 +13,41 @@ class TicketMaster {
     const queryURL = `${this.BASE_URL}${this.DISCOVERY}/events.json?apikey=${
       this.CONSUMER_KEY
     }&city=${cityName}`;
+
     return axios
       .get(queryURL)
       .then(response => {
-        return response.data._embedded.events;
+        const { events } = response.data._embedded;
+        events.forEach(event => {
+          event.formattedDate = this.getFormattedDate(event.dates.start.localDate);
+          event.venueName = this.getVenueName(event._embedded.venues[0].url);
+        });
+        return events;
+      })
+      .catch(err => console.error('ERROR: ', err));
+  }
+
+  getVenueName(urlStr) {
+    let name = urlStr.split('/')[4].split('-');
+    name.splice(-2);
+    let capitalized = name.map(word => {
+      return [...word].map((letter, i) => (i === 0 ? letter.toUpperCase() : letter.toLowerCase())).join(``);
+    });
+    return capitalized.join(` `);
+  }
+
+  getFormattedDate(date) {
+    const tmpDate = new Date(date).toString().split(` `);
+    const formattedDate = tmpDate.splice(1, 2);
+    return [formattedDate[0].toUpperCase(), formattedDate[1]];
+  }
+
+  getVenueDetails(id) {
+    const queryURL = `${this.BASE_URL}${this.DISCOVERY}/venues/${id}.json?apikey=${this.CONSUMER_KEY}`;
+    return axios
+      .get(queryURL)
+      .then(venue => {
+        return venue;
       })
       .catch(err => console.error('ERROR: ', err));
   }
