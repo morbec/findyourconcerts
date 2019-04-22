@@ -8,6 +8,8 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bandsintownv3": "^1.1.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
@@ -17,8 +19,7 @@
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
     "nodebrainz": "^2.1.1",
-    "serve-favicon": "^2.5.0",
-    "ticketmaster": "^2.0.4"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

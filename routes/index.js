@@ -1,21 +1,26 @@
+require('dotenv').config();
+
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 const NB = require('nodebrainz');
 const nb = new NB({ userAgent: 'my-awesome-app/0.0.1 ( http://localhost:3000 )' });
-const EventAPI = require('ticketmaster');
+const BITAPIHander = require('../api/BITAPIHandler');
+const TicketMasterAPIHandler = require('../api/TicketMasterAPIHandler');
 
+const bandsintown = new BITAPIHander(`${process.env.BASE_URL}`, `${process.env.BANDS_IN_TOWN_APP_ID}`);
+const ticketmaster = new TicketMasterAPIHandler('NoupClnMk40pzkXCMWUEYQ7oGIqXL89s');
 
+const getIP = () => {
+  axios
+    .get('http://smart-ip.net/geoip-json?callback=?')
+    .then(response => console.log(response))
+    .catch(err => console.error('ERROR: ', err));
+};
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  EventAPI('5jigh8zGctPifG4QY4z1cEsFCIGA9Dnw').discovery.v2.event.all()
-  .then(function(result) {
-    // "result" is an object of Ticketmaster events information
-    console.log(result.items[0].dates);
-  });
-  // nb.search('artist', { artist: 'tool', country: 'US' }, function(err, response) {
-  //   console.log(response);
-  // });
+  // getIP();
   res.render('index');
 });
 
