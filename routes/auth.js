@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  res.render('auth/login', { errorMessage: req.flash('error') });
 });
 
 router.get('/signup', (req, res, next) => {
@@ -26,7 +26,7 @@ router.post(
   '/login',
   passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: 'auth/login',
+    failureRedirect: 'login',
     failureFlash: true,
     passReqToCallback: true
   })
@@ -51,6 +51,8 @@ router.post('/signup', (req, res, next) => {
       res.redirect('/');
     })
     .catch(err => {
+      // FIXME: Check error code returned by mongodb and update errorMessage with
+      // the right error message
       res.render('auth/signup', {
         errorMessage: 'There is already a registered user with this username'
       });
