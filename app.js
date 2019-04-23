@@ -42,7 +42,7 @@ app.use(cookieParser());
 // Authentication + Session
 app.use(
   session({
-    secret: '666',
+    secret: 'find your concerts',
     resave: false,
     saveUninitialized: false
   })
@@ -100,6 +100,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const protected = require('./routes/protected');
+app.use('/', protected);
 
 const events = require('./routes/events');
 app.use('/events', events);
