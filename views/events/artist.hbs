@@ -3,7 +3,17 @@
   <a href="/artist/profile/:{{artistMBId}}">Click for artist profile</a>
 </div>
 
-<div class="artist-search-container">
+<p>
+  <label for="city-selection">Select a city:</label>
+  <select name="city-selection" id="city-selection" onchange="citySelected()">
+    <option value="">Select a city:</option>
+    {{#each cityList}}
+    <option value={{this}}>{{this}}</option>
+    {{/each}}
+  </select>
+</p>
+
+<div class=" artist-search-container">
   {{#each events}}
   {{> eventContainer this}}
   {{/each}}

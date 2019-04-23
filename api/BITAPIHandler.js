@@ -49,13 +49,19 @@ class BITAPIHandler {
       .get(queryURL)
       .then(response => {
         const { data } = response;
+        const cityList = [];
+        const countryList = [];
         data.forEach(event => {
           const date = new Date(event.datetime).toString().split(` `);
-          const formattedDate = date.splice(1, 2)
-        
+          const formattedDate = date.splice(1, 2);
           event.formattedDate = [formattedDate[0].toUpperCase(), formattedDate[1]];
-        })
-
+          event.country = event.venue.country;
+          if (!countryList.includes(event.venue.country)) countryList.push(event.venue.country);
+          event.city = event.venue.city;
+          if (!cityList.includes(event.venue.city)) cityList.push(event.venue.city);
+        });
+        data.countryList = [...countryList];
+        data.cityList = [...cityList];
         return data;
       })
       .catch(err => console.error('ERROR: ', err));
