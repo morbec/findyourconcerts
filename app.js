@@ -109,4 +109,7 @@ app.use('/events', events);
 
 const auth = require('./routes/auth');
 app.use('/auth', auth);
+const artist = require('./routes/artist');
+app.use('/artist', artist);
+
 module.exports = app;
