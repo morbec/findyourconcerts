@@ -55,4 +55,7 @@ app.use('/', index);
 const events = require('./routes/events');
 app.use('/events', events);
 
+const artist = require('./routes/artist');
+app.use('/artist', artist);
+
 module.exports = app;
