@@ -22,14 +22,7 @@ spotifyApi
         console.error('Something went wrong when retrieving an access token', error);
     });
 
-router.get('/', (req, res, next) => {
-    // bandsInTown
-    //     .getArtistEvents('Metallica')
-    //     .then(events => {
-    //         res.render('events/artist.hbs', { events });
-    //     })
-    //     .catch(err => console.error(err));
-});
+router.get('/', (req, res, next) => {});
 
 router.post('/', async (req, res, next) => {
     const { artistInput } = req.body;
@@ -43,10 +36,8 @@ router.post('/', async (req, res, next) => {
             .searchArtists(artistInput)
             .then(data => {
                 const { items } = data.body.artists;
-                console.log('This is the data', items);
 
                 if (items.length < 1) {
-                    console.log('No band was found');
                     res.render('index', { artistErrorMessage: 'Artist not found' });
                 } else {
                     res.redirect(`/artist/search/${artistInput}`);

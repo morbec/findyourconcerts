@@ -26,14 +26,11 @@ router.get('/:artistInput', (req, res, next) => {
         .searchArtists(artistInput)
         .then(data => {
             const { items } = data.body.artists;
-            console.log(items)
             res.render('artist/search.hbs', { items });
         })
         .catch(err => {
             console.error(`Error when looking for artist`, err);
         });
-
-    console.log(artistInput);
 });
 
 module.exports = router;
