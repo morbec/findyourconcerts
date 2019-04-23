@@ -60,8 +60,8 @@ class BITAPIHandler {
           event.city = event.venue.city;
           if (!cityList.includes(event.venue.city)) cityList.push(event.venue.city);
         });
-        data.countryList = [...countryList];
-        data.cityList = [...cityList];
+        data.countryList = countryList;
+        data.cityList = cityList;
         return data;
       })
       .catch(err => console.error('ERROR: ', err));
