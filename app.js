@@ -104,6 +104,6 @@ app.use('/', index);
 const events = require('./routes/events');
 app.use('/events', events);
 
-const auth = require('./routes/auth/auth');
+const auth = require('./routes/auth');
 app.use('/auth', auth);
 module.exports = app;
