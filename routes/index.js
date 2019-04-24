@@ -16,7 +16,7 @@ const getIP = () => {
     .get('http://smart-ip.net/geoip-json?callback=?')
     .then(response => console.log(response))
     .catch(err => console.error('ERROR: ', err));
-};
+}; 
 
 /* GET home page */
 router.get('/', (req, res, next) => {
