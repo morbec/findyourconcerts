@@ -51,4 +51,18 @@ router.post('/', async (req, res, next) => {
   res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });
 });
 
+router.post('/api', async (req, res, next) => {
+  const { artist } = req.body;
+  //
+  if (req.isAuthenticated()) {
+    const artistInfo = await bandsInTown.getArtistInfo(artist);
+    const artistEvents = await bandsInTown.getArtistEvents(addEventListener);
+    console.log('artistInfo', artistInfo);
+    console.log('evetnts', artistEvents);
+  } else {
+    // artistErrorMessage: "You need to login first"
+    console.log('not logged');
+  }
+});
+
 module.exports = router;
