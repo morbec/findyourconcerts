@@ -1,15 +1,21 @@
-<h1>login</h1>
+<div class="login-container">
+  <div class="login-title">
+    <h1>Login</h1>
+  </div>
 
-<form id="form" action="/auth/login" method="post">
-  <label for="username">Username</label>
-  <input type="text" name="username" required>
-  <label for="password">Password</label>
-  <input type="password" name="password" required>
+  <div class="login-input-container">
+    <form id="form" action="/auth/login" method="post" class="login-input-form">
+      <div class="input-div">
+        <input class="login-input" type="text" placeholder="Enter username" name="username" required>
+      </div>
+      <div class="input-div">
+        <input class="login-input" type="password" placeholder="Enter password" name="password" required>
+      </div>
+    </form>
+    {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+    {{/if}}
+  </div>
+  <a href="/">Home</a>
 
-  {{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-  {{/if}}
-
-  <button type="submit">Login</button>
-</form>
-<a href="/">Home</a>
+</div>
