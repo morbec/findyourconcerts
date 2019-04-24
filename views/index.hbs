@@ -1,17 +1,47 @@
-<form id="artist-landing-form" action="/events/artist" method="POST">
-  <label for="artist-input">Artist</label>
-  <input required type="text" name="artistInput" id="artistInput" />
-  <button>Search</button>
-  {{#if artistErrorMessage}}
-    {{artistErrorMessage}}
-  {{/if}}
-</form>
-<form id="city-landing-form" action="/events/city" method="POST">
+<div class="landing">
+
+  <div class="landing-container">
+    <div class="landing-logo">
+      <h1>Find Your Concerts</h1>
+    </div>
+
+    <div class="landing-input-container contaner">
+      <form id="artist-landing-form" action="/events/artist" method="POST" class="input-form">
+        <input required type="text" placeholder="Look up your artist" name="artistInput" id="artistInput"
+          class="landing-search-input" autocomplete="off" />
+        {{!-- <button></button> --}}
+        {{#if artistErrorMessage}}
+        {{artistErrorMessage}}
+        {{/if}}
+      </form>
+
+      <div class="landing-input-container-btns">
+        <a href="/auth/login" class="btn btn-outline-light btn-lg"><span id="transp">Log in</span></a>
+        <a href="/auth/signup" class="btn btn-outline-light btn-lg">Sign up</a>
+      </div>
+
+
+
+    </div>
+
+  </div>
+  <div class="content">
+    <div class="content-features">
+      <h2>Features</h2>
+      <p>Search for your desired artists, no hassle, no clutter</p>
+    </div>
+    <div class="content-about-us">
+      <h2>About Us</h2>
+      <p>We intend to provide a minimalist experience for the concert seeker user</p>
+    </div>
+  </div>
+</div>
+
+{{!-- <form id="city-landing-form" action="/events/city" method="POST">
   <label for="city-input">City</label>
   <input required type="text" name="cityInput" id="cityInput" />
   <button>Search</button>
   {{#if cityErrorMessage}}
     {{cityErrorMessage}}
   {{/if}}
-</form>
-
+</form> --}}

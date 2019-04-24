@@ -1,19 +1,27 @@
-<h1>Sign up</h1>
+<div class="signup-container">
+  <div class="signup-title">
+    <h1>Sign up</h1>
+  </div>
 
-<form id="form" action="/auth/signup" method="post">
-  <label for="firstName">First name</label>
-  <input type="text" name="firstName" required>
-  <label for="lastName">Last name</label>
-  <input type="text" name="lastName" required>
-  <label for="username">Username</label>
-  <input type="text" name="username" required>
-  <label for="password">Password</label>
-  <input type="password" name="password" required>
+  <div class="signup-input-container">
+    <form id="form" action="/auth/signup" method="post" class="signup-input-form">
+      <div class="signup-div">
+        <input type="text" class="signup-input" placeholder="Enter first name" name="firstName" required>
+      </div>
+      <div class="signup-div">
+        <input type="text" class="signup-input" placeholder="Enter last name" name="lastName" required>
+      </div>
+      <div class="signup-div">
+        <input type="text" class="signup-input" placeholder="Enter username" name="username" required>
+      </div>
+      <div class="signup-div">
+        <input type="password" class="signup-input" placeholder="Enter password" name="password" required>
+      </div>
+      {{#if errorMessage}}
+      <div class="error-message">{{errorMessage}}</div>
+      {{/if}}
+    </form>
+  </div>
+  <a href="/">Home</a>
 
-  {{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
-  {{/if}}
-
-  <button type="submit">Sign up!</button>
-</form>
-<a href="/">Home</a>
+</div>
