@@ -22,6 +22,10 @@ const userSchema = new Schema({
   displayName: {
     type: String
   },
+  artists: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Artist'
+  },
   role: {
     type: String,
     enum: ['user', 'admin'],
