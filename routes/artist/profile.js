@@ -34,7 +34,6 @@ router.get('/:artistId', async (req, res, next) => {
     const lastInfo = lastReq.data
     const { artist } = lastInfo;
     const name = artist.name.toLowerCase();
-    console.log(artistData);
 
     res.render('artist/profile.hbs', { artistData, artistInfo, artist, name });
 });
