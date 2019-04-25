@@ -47,17 +47,14 @@ router.post('/', async (req, res, next) => {
     //   .catch(err => {
     //     console.error(`Error when looking for artist`, err);
     //   });
-    res.render('index', { artistErrorMessage: 'event not found' })
+    res.render('index', { artistErrorMessage: 'event not found' });
     return;
   }
 
-  let following = false;
   const isAuthenticated = req.isAuthenticated();
-  if (isAuthenticated) {
-    const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
-    if (artistdb) following = true;
-  }
-
+  const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
+  let following = false;
+  if (artistdb) following = true;
   res.render('events/artist.hbs', {
     events,
     artistInput,
@@ -69,9 +66,9 @@ router.post('/', async (req, res, next) => {
   });
 });
 
-router.post('/api', async (req, res, next) => {
+router.get('/follow/:artistName', async (req, res, next) => {
   if (req.isAuthenticated()) {
-    const { artistName } = req.body;
+    const { artistName } = req.params;
     const artistInfo = await bandsInTown.getArtistInfo(artistName);
     User.findOne({ _id: `${req.user._id}` })
       .then(user => {
@@ -96,6 +93,9 @@ router.post('/api', async (req, res, next) => {
       .catch(err => {
         console.error('ERROR: ', err);
       });
+    console.log('yayayaya');
+    // FIXME: Should redirect back to the previous page or user list of artists
+    res.redirect('/');
   }
 });
 
