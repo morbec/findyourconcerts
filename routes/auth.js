@@ -45,6 +45,8 @@ router.post('/signup', (req, res, next) => {
   const salt = bcrypt.genSaltSync();
   const hashPassword = bcrypt.hashSync(password, salt);
 
+  // FIXME: When a new user sign up all artists in the db will be add to its list
+  // of artists.
   User.create({ firstName, lastName, username, password: hashPassword })
     .then(() => {
       // FIXME: What to do next?

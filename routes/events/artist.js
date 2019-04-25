@@ -86,14 +86,36 @@ router.get('/follow/:artistName', async (req, res, next) => {
           const _id = user._id;
           const { firstName, lastName, artists } = user;
           User.findOneAndUpdate({ _id }, { firstName, lastName, artists })
-            .then(() => console.log())
+            .then(() => this)
             .catch(err => err);
         });
       })
       .catch(err => {
         console.error('ERROR: ', err);
       });
-    console.log('yayayaya');
+    // FIXME: Should redirect back to the previous page or user list of artists
+    res.redirect('/');
+  }
+});
+
+router.get('/unfollow/:artistName', async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const { artistName } = req.params;
+    const artistInfo = await bandsInTown.getArtistInfo(artistName);
+
+    const userdb = await User.findByIdAndUpdate({
+      _id: req.user._id
+    });
+    const artistdb = await Artist.findOne({
+      bandsintown_id: artistInfo.id
+    });
+    //result = words.filter(w => w !== 'elite')
+    let index = userdb.artists.indexOf(artistdb._id);
+    userdb.artists.splice(index);
+    await userdb.save();
+    await Artist.findOneAndDelete({
+      _id: artistdb._id
+    });
     // FIXME: Should redirect back to the previous page or user list of artists
     res.redirect('/');
   }
