@@ -13,4 +13,7 @@ router.use('/artist', artist);
 const city = require('./city');
 router.use('/city', city);
 
+const details = require('./details');
+router.use('/details', details);
+
 module.exports = router;

@@ -1,20 +1,47 @@
-<div class="artist-search-name">
-  <h1>{{artistInput}}</h1>
-  <a href="/artist/profile/:{{artistMBId}}">Click for artist profile</a>
+<div class="navbar-container">
+  <a class="navbar-link" href="/">Home</a>
+  <a class="navbar-link" href="/auth/login">Log In</a>
 </div>
 
-<p>
-  <label for="city-selection">Select a city:</label>
-  <select name="city-selection" id="city-selection" onchange="citySelected()">
-    <option value="">Select a city:</option>
-    {{#each cityList}}
-    <option value={{this}}>{{this}}</option>
-    {{/each}}
-  </select>
-</p>
+<div class="search-result-container">
 
-<div class=" artist-search-container">
-  {{#each events}}
-  {{> eventContainer this}}
-  {{/each}}
+  <div class="artist-search-header">
+
+    <div class="artist-search-name">
+      <h1>{{artistInput}}</h1>
+      <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
+    </div>
+
+    <div class="artist-search-select">
+      <label for="city-selection"></label>
+      <select name="city-selection" id="city-selection" onchange="citySelected()" class="custom-select-sm city-btn">
+        <option value="">Select a city</option>
+        {{#each cityList}}
+        <option value={{this}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="artist-search-container">
+
+    {{#each events}}
+    <div class="event-container">
+
+      <div class="event-container-date">
+        <p class="event-container-month">{{this.formattedDate.[0]}}</p>
+        <p class="event-container-day">{{this.formattedDate.[1]}}</p>
+      </div>
+      <div class="event-container-venue">
+        {{this.venue.name}}
+      </div>
+      <div class="event-container-location">
+        {{this.venue.city}}, {{this.venue.country}}
+      </div>
+      <div class="event-detail-btn">
+        <a href="/events/details/{{../artistInput}}/{{this.id}}">Get details</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 </div>

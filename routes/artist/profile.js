@@ -5,6 +5,7 @@ const router = express.Router();
 const BITAPIHandler = require('../../api/BITAPIHandler');
 const MBAPIHandler = require('../../api/MBAPIHandler');
 const SpotifyWebApi = require('spotify-web-api-node');
+const axios = require('axios');
 
 const spotifyApi = new SpotifyWebApi({
     clientId: `${process.env.SPOTIFY_CLIENT_ID}`,
@@ -26,11 +27,16 @@ const musicBrainz = new MBAPIHandler(`${process.env.MB_BASE_URL}`);
 
 router.get('/:artistId', async (req, res, next) => {
     const { artistId } = req.params;
-    const formattedId = artistId.substr(1);
-    const artistData = await musicBrainz.getArtistInfoById(formattedId);
+    const artistData = await musicBrainz.getArtistInfoById(artistId);
     const artistInfo = await bandsInTown.getArtistInfo(artistData.name);
+    const lastQuery = `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=${artistId}&api_key=f4529f53125ed399f4bee0c8d07d088b&format=json`;
+    const lastReq = await axios.get(lastQuery);
+    const lastInfo = lastReq.data
+    const { artist } = lastInfo;
+    const name = artist.name.toLowerCase();
+    console.log(artist.image);
 
-    res.render('artist/profile.hbs', { artistData, artistInfo });
+    res.render('artist/profile.hbs', { artistData, artistInfo, artist, name });
 });
 
 router.get('/:artistId/spot', (req, res, next) => {
