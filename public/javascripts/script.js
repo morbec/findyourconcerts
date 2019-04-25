@@ -19,7 +19,7 @@ const citySelected = () => {
 
 if (document.querySelector('#follow')) {
   document.querySelector('#follow').addEventListener('click', () => {
-    let artist = document.querySelector('#artist').innerHTML;
-    axios.post('http://localhost:3000/events/artist/api', { artist }).then(() => console.log('followed'));
+    const artistName = document.querySelector('#artist').innerHTML;
+    axios.post('http://localhost:3000/events/artist/api', { artistName }).then(() => console.log('followed'));
   });
 }

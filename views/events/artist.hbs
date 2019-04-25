@@ -1,7 +1,11 @@
 <div class="artist-search-name">
   <h1 id="artist">{{artistInput}}</h1>
   <a href="/artist/profile/:{{artistMBId}}">Click for artist profile</a>
+  {{#if isAuthenticated}}
   <button id="follow">follow</button>
+  {{else}}
+  <button disabled id="follow">follow</button>
+  {{/if}}
 </div>
 
 <p>

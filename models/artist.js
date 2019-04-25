@@ -7,6 +7,17 @@ const artistSchema = new Schema({
     required: true
   },
   bandsintown_id: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  image_url: {
+    type: String
+  },
+  thumb_url: {
+    type: String
+  },
+  facebook_page_url: {
     type: String
   },
   spotify_id: {
