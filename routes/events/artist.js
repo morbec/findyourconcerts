@@ -35,7 +35,6 @@ router.post('/', async (req, res, next) => {
   const artistMBId = artistInfo.mbid;
   const { cityList, countryList } = events;
 
-
   if (!events || events.length === 0 || events === 'undefined') {
     spotifyApi
       .searchArtists(artistInput)
@@ -90,7 +89,11 @@ router.post('/api', async (req, res, next) => {
             .catch(err => err);
         });
       })
-      .catch(err => console.error('ERROR: ', err));
+      .catch(err => {
+        console.error('ERROR: ', err);
+        return false;
+      });
+    return true;
   }
 });
 
