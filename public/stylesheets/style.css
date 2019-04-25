@@ -8,10 +8,28 @@
 a {
   color: #00b7ff; }
 
-/**********************Landing************************/
 body {
   box-sizing: border-box;
   max-width: 100vw; }
+
+body::-webkit-scrollbar {
+  width: 1em; }
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey; }
+
+/**********************Landing************************/
+.navbar-container-landing {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 0.5px solid black; }
 
 .landing-container {
   width: 100%;
@@ -37,7 +55,6 @@ body {
   max-width: 60%; }
 
 .landing-input-container {
-  background-color: rgba(0, 0, 0, 0.363);
   color: white;
   height: 30%;
   width: 37%;
@@ -56,31 +73,35 @@ body {
   align-items: center; }
 
 .landing-search-input {
-  background-color: rgba(0, 0, 0, 0.438);
+  background-color: rgba(0, 0, 0, 0.719);
   border: 0;
-  height: 50%;
+  height: 1.2em;
   size: 10em;
   color: white;
   font-size: 2.5em;
   font-weight: 100;
-  text-align: center; }
+  padding-left: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px; }
 
 .landing-search-input:focus {
   outline: none; }
 
 .landing-search-input::placeholder {
   font-weight: 100;
-  color: rgba(255, 255, 255, 0.548); }
-
-.landing-search-input:focus::-webkit-input-placeholder {
-  color: transparent; }
+  color: rgba(255, 255, 255, 0.808);
+  text-align: center; }
 
 .landing-input-container-btns {
   margin-top: 10px;
   width: 42%;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  display: none; }
+
+.landing-input-container-btns button {
+  background-color: transparent; }
 
 .landing-input-container-btns a {
   font-weight: 100; }
@@ -262,7 +283,7 @@ body {
 /****************************Event Details*****************************/
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 50px;
@@ -486,6 +507,7 @@ body {
   font-weight: 300; }
 
 .event-container-month {
+  font-weight: 700;
   font-size: .8em; }
 
 .event-container-venue {
