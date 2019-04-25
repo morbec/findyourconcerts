@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
     //   .catch(err => {
     //     console.error(`Error when looking for artist`, err);
     //   });
-    res.render('index', { artistErrorMessage: 'Artist not found' })
+    res.render('index', { artistErrorMessage: 'event not found' })
     return;
   }
   // res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });

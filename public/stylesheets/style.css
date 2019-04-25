@@ -391,6 +391,32 @@ body {
 .event-detailed-location {
   color: slategrey; }
 
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .details-window {
+    flex-direction: column; }
+  .details-container {
+    flex-direction: column;
+    max-height: 85%; }
+  .event-profile-container {
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    border: none; }
+  .event-band-img {
+    width: 50%; }
+  .event-profile-btns {
+    flex-direction: column; }
+  .event-profile-btns button {
+    margin-top: 10px;
+    max-width: 60%; }
+  .event-profile-btns a {
+    margin-top: 10px;
+    max-width: 60%; }
+  .lineup-detailed-container {
+    width: 100%; }
+  .event-lineup-container {
+    width: 100%; } }
+
 /**************************Events Search Result****************************************/
 .search-result-container {
   width: 100%;
@@ -483,5 +509,12 @@ body {
 .event-detail-btn a:hover {
   color: slategrey;
   text-decoration: none; }
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .event-container {
+    width: 80%;
+    font-size: .8em; }
+  .city-btn {
+    width: 30%; } }
 
 /*# sourceMappingURL=style.css.map */
