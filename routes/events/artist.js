@@ -31,7 +31,6 @@ router.post('/', async (req, res, next) => {
 
   const events = await bandsInTown.getArtistEvents(artistInput);
   const artistInfo = await bandsInTown.getArtistInfo(artistInput);
-
   const artistMBId = artistInfo.mbid;
   const { cityList, countryList } = events;
 
@@ -51,9 +50,13 @@ router.post('/', async (req, res, next) => {
     res.render('index', { artistErrorMessage: 'event not found' })
     return;
   }
-  // res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });
+
+  let following = false;
   const isAuthenticated = req.isAuthenticated();
-  // const { cityList, countryList } = events;
+  if (isAuthenticated) {
+    const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
+    if (artistdb) following = true;
+  }
 
   res.render('events/artist.hbs', {
     events,
@@ -61,7 +64,8 @@ router.post('/', async (req, res, next) => {
     artistMBId,
     countryList,
     cityList,
-    isAuthenticated
+    isAuthenticated,
+    following
   });
 });
 
@@ -91,9 +95,7 @@ router.post('/api', async (req, res, next) => {
       })
       .catch(err => {
         console.error('ERROR: ', err);
-        return false;
       });
-    return true;
   }
 });
 
