@@ -24,7 +24,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
 mongoose
-  .connect(`mongodb://${process.env.DB_PATH}/${process.env.DB_NAME}`, { useNewUrlParser: true })
+  .connect(`${process.env.DB_URI}`, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
