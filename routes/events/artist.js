@@ -54,7 +54,7 @@ router.post('/', async (req, res, next) => {
   }
   // res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });
   const isAuthenticated = req.isAuthenticated();
-  const { cityList, countryList } = events;
+  // const { cityList, countryList } = events;
 
   res.render('events/artist.hbs', {
     events,
