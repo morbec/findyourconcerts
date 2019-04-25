@@ -16,3 +16,10 @@ const citySelected = () => {
         }
     });
 };
+
+if (document.querySelector('#follow')) {
+  document.querySelector('#follow').addEventListener('click', () => {
+    const artistName = document.querySelector('#artist').innerHTML;
+    axios.post('http://localhost:3000/events/artist/api', { artistName }).then(() => console.log('followed'));
+  });
+}

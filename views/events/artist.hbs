@@ -1,6 +1,14 @@
 <div class="navbar-container">
   <a class="navbar-link" href="/">Home</a>
   <a class="navbar-link" href="/auth/login">Log In</a>
+<div class="artist-search-name">
+  <h1 id="artist">{{artistInput}}</h1>
+  <a href="/artist/profile/:{{artistMBId}}">Click for artist profile</a>
+  {{#if isAuthenticated}}
+  <button id="follow">follow</button>
+  {{else}}
+  <button disabled id="follow">follow</button>
+  {{/if}}
 </div>
 
 <div class="search-result-container">
