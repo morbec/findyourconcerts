@@ -1,6 +1,6 @@
 <div class="navbar-container">
-  <a class="navbar-link" href="/">Home</a>
-  <a class="navbar-link" href="/auth/login">Log In</a>
+  <a class="navbar-link" href="/">home</a>
+  <a class="navbar-link" href="/auth/login">log In</a>
 </div>
 
 
@@ -19,19 +19,19 @@
         </p>
         <p class="event-location">{{eventInfo.venue.city}}, {{eventInfo.venue.country}}</p>
         <div class="event-profile-btns">
-          <button class="btn btn-outline-dark btn-sm">Interested</button>
+          <button class="btn btn-outline-dark btn-sm">interested</button>
           <a class="btn btn-outline-dark btn-sm" href="
         {{#each eventInfo.offers}}
         {{this.url}}
         {{/each}}
-      " target=_blank>Get Tickets</a>
+      " target=_blank>get tickets</a>
         </div>
       </div>
     </div>
 
     <div class="lineup-detailed-container">
 
-      <p class="lineup-text">Lineup: </p>
+      <p class="lineup-text">lineup: </p>
       <div class="event-lineup-container">
         {{#each thumbsArr}}
         <div class="event-lineup-content">

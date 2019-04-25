@@ -1,25 +1,25 @@
 <div class="navbar-container-login">
-  <a class="navbar-link" href="/">Home</a>
+  <a class="navbar-link" href="/">home</a>
 </div>
 
 <div class="signup-container">
   <div class="signup-title">
-    <h1>Sign up</h1>
+    <h1>sign up</h1>
   </div>
 
   <div class="signup-input-container">
     <form id="form" action="/auth/signup" method="post" class="signup-input-form">
       <div class="signup-div">
-        <input type="text" class="signup-input" placeholder="Enter first name" name="firstName" required>
+        <input type="text" class="signup-input" placeholder="first_name" name="firstName" required>
       </div>
       <div class="signup-div">
-        <input type="text" class="signup-input" placeholder="Enter last name" name="lastName" required>
+        <input type="text" class="signup-input" placeholder="last_name" name="lastName" required>
       </div>
       <div class="signup-div">
-        <input type="text" class="signup-input" placeholder="Enter username" name="username" required>
+        <input type="text" class="signup-input" placeholder="username" name="username" required>
       </div>
       <div class="signup-div">
-        <input type="password" class="signup-input" placeholder="Enter password" name="password" required>
+        <input type="password" class="signup-input" placeholder="password" name="password" required>
       </div>
       <input type="submit" style="visibility: hidden;" />
       {{#if errorMessage}}

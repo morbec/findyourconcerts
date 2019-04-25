@@ -1,6 +1,6 @@
 <div class="navbar-container">
-  <a class="navbar-link" href="/">Home</a>
-  <a class="navbar-link" href="/auth/login">Log In</a>
+  <a class="navbar-link" href="/">home</a>
+  <a class="navbar-link" href="/auth/login">log in</a>
 </div>
 
 
@@ -12,7 +12,7 @@
     <div class="artist-search-name">
       <h1 id="artist">{{artistInput}}</h1>
       <div class="artist-search-btns">
-        <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
+        <a href="/artist/profile/{{artistMBId}}">click for artist profile</a>
         {{#if isAuthenticated}}
         <button id="follow" class="btn btn-outline-dark btn-sm">follow</button>
         {{#if following}}
@@ -29,7 +29,7 @@
     <div class="artist-search-select">
       <label for="city-selection"></label>
       <select name="city-selection" id="city-selection" onchange="citySelected()" class="custom-select-sm city-btn">
-        <option value="">Select a city</option>
+        <option value="">select a city</option>
         {{#each cityList}}
         <option value={{this}}>{{this}}</option>
         {{/each}}
@@ -53,7 +53,7 @@
         {{this.venue.city}}, {{this.venue.country}}
       </div>
       <div class="event-detail-btn">
-        <a href="/events/details/{{../artistInput}}/{{this.id}}">Get details</a>
+        <a href="/events/details/{{../artistInput}}/{{this.id}}">get details</a>
       </div>
     </div>
     {{/each}}
