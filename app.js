@@ -20,6 +20,9 @@ const flash = require('connect-flash');
 // Use createIndexes instead.
 mongoose.set('useCreateIndex', true);
 
+// Fix mongoose DeprecationWarning
+mongoose.set('useFindAndModify', false);
+
 mongoose
   .connect(`mongodb://${process.env.DB_PATH}/${process.env.DB_NAME}`, { useNewUrlParser: true })
   .then(x => {

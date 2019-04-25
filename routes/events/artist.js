@@ -89,7 +89,11 @@ router.post('/api', async (req, res, next) => {
             .catch(err => err);
         });
       })
-      .catch(err => console.error('ERROR: ', err));
+      .catch(err => {
+        console.error('ERROR: ', err);
+        return false;
+      });
+    return true;
   }
 });
 

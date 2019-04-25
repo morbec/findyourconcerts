@@ -10,7 +10,7 @@
   <div class="artist-search-header">
 
     <div class="artist-search-name">
-      <h1>{{artistInput}}</h1>
+      <h1 id="artist">{{artistInput}}</h1>
       <div class="artist-search-btns">
         <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
         {{#if isAuthenticated}}
@@ -19,7 +19,6 @@
         <button disabled id="follow" class="btn btn-outline-dark btn-sm">follow</button>
         {{/if}}
       </div>
-
     </div>
 
     <div class="artist-search-select">
