@@ -431,8 +431,11 @@ body {
 .artist-search-select {
   margin-top: 10px; }
 
+.artist-search-btns button {
+  margin-left: 20px; }
+
 .city-btn {
-  width: 20%; }
+  width: 15%; }
 
 .city-btn:focus {
   outline: none; }

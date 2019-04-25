@@ -1,15 +1,9 @@
 <div class="navbar-container">
   <a class="navbar-link" href="/">Home</a>
   <a class="navbar-link" href="/auth/login">Log In</a>
-<div class="artist-search-name">
-  <h1 id="artist">{{artistInput}}</h1>
-  <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
-  {{!-- {{#if isAuthenticated}}
-  <button id="follow">follow</button>
-  {{else}}
-  <button disabled id="follow">follow</button>
-  {{/if}} --}}
 </div>
+
+
 
 <div class="search-result-container">
 
@@ -17,7 +11,15 @@
 
     <div class="artist-search-name">
       <h1>{{artistInput}}</h1>
-      <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
+      <div class="artist-search-btns">
+        <a href="/artist/profile/{{artistMBId}}">Click for artist profile</a>
+        {{#if isAuthenticated}}
+        <button id="follow" class="btn btn-outline-dark btn-sm">following</button>
+        {{else}}
+        <button disabled id="follow" class="btn btn-outline-dark btn-sm">follow</button>
+        {{/if}}
+      </div>
+
     </div>
 
     <div class="artist-search-select">
