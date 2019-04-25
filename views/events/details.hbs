@@ -1,0 +1,60 @@
+<div class="navbar-container">
+  <a class="navbar-link" href="/">Home</a>
+  <a class="navbar-link" href="/auth/login">Log In</a>
+</div>
+
+
+<div class="details-window">
+
+  <div class="details-container">
+
+    <div class="event-profile-container">
+
+      <img class="event-band-img" src="{{artistInfo.image_url}}" alt="band-img">
+
+      <div class="event-profile-content">
+        <p class="event-datevenue">
+          {{eventInfo.formattedDate.[0]}} | {{eventInfo.formattedDate.[1]}} | {{eventInfo.formattedDate.[2]}} @
+          {{eventInfo.venue.name}}
+        </p>
+        <p class="event-location">{{eventInfo.venue.city}}, {{eventInfo.venue.country}}</p>
+        <div class="event-profile-btns">
+          <button class="btn btn-outline-dark btn-sm">Interested</button>
+          <a class="btn btn-outline-dark btn-sm" href="
+        {{#each eventInfo.offers}}
+        {{this.url}}
+        {{/each}}
+      " target=_blank>Get Tickets</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="lineup-detailed-container">
+
+      <p class="lineup-text">Lineup: </p>
+      <div class="event-lineup-container">
+        {{#each thumbsArr}}
+        <div class="event-lineup-content">
+          <img class="event-lineup-img" src="{{this.[1]}}" alt="">
+          <div class="lineup-band-name">
+            <p>{{this.[0]}}</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <div class="event-detailed-container">
+
+        <div class="event-datiled-dateandtime">
+          <p>{{eventInfo.formattedDate.[0]}} | {{eventInfo.formattedDate.[1]}} | {{eventInfo.formattedDate.[2]}}</p>
+          <p>{{eventInfo.eventTime}}</p>
+        </div>
+
+        <div class="event-detailed-venue">
+          <p>{{eventInfo.venue.name}}</p>
+          <p class="event-detailed-location">{{eventInfo.venue.city}}, {{eventInfo.venue.country}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,9 +28,13 @@ router.get('/', (req, res, next) => {});
 
 router.post('/', async (req, res, next) => {
   const { artistInput } = req.body;
+
   const events = await bandsInTown.getArtistEvents(artistInput);
   const artistInfo = await bandsInTown.getArtistInfo(artistInput);
+
   const artistMBId = artistInfo.mbid;
+  const { cityList, countryList } = events;
+
 
   if (!events || events.length === 0 || events === 'undefined') {
     spotifyApi
@@ -48,8 +52,9 @@ router.post('/', async (req, res, next) => {
 
     return;
   }
+  // res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });
   const isAuthenticated = req.isAuthenticated();
-  const { cityList, countryList } = events;
+  // const { cityList, countryList } = events;
 
   res.render('events/artist.hbs', {
     events,

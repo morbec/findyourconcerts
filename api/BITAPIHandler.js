@@ -66,6 +66,35 @@ class BITAPIHandler {
       })
       .catch(err => console.error('ERROR: ', err));
   }
+
+  getArtistEventsById(artistName, eventId) {
+    const artist = replaceCharacters(artistName);
+    let queryURL = `${this.BASE_URL}/artists/${artist}/events?app_id=${this.app_id}`;
+
+    return axios
+      .get(queryURL)
+      .then(response => {
+        const { data } = response;
+        
+        data.forEach(event => {
+          const date = new Date(event.datetime).toString().split(` `);
+          const formattedDate = date.splice(1, 3);
+          event.formattedDate = [formattedDate[0].toUpperCase(), formattedDate[1], formattedDate[2]];
+
+         
+
+          const hoursDate = new Date(event.datetime).getHours(); // retrieve current hours (in 24 mode)
+          const dayMode = hoursDate < 12 ? "AM" : "PM"; // if it's less than 12 then "am"
+          const hours12FMT = hoursDate <= 12 ? (hoursDate == 0 ? 12 : hoursDate) : hoursDate - 12;
+          const eventTime = `${hours12FMT}:00 ${dayMode}`
+          event.eventTime = eventTime;
+        });
+        
+        let filteredEvent = data.filter(event => event.id === eventId);
+        return filteredEvent;
+      })
+      .catch(err => console.error('ERROR: ', err));
+  }
 }
 
 /**
