@@ -35,21 +35,20 @@ router.post('/', async (req, res, next) => {
   const artistMBId = artistInfo.mbid;
   const { cityList, countryList } = events;
 
-
   if (!events || events.length === 0 || events === 'undefined') {
-    spotifyApi
-      .searchArtists(artistInput)
-      .then(data => {
-        const { items } = data.body.artists;
+    // spotifyApi
+    //   .searchArtists(artistInput)
+    //   .then(data => {
+    //     const { items } = data.body.artists;
 
-        items.length < 1
-          ? res.render('index', { artistErrorMessage: 'Artist not found' })
-          : res.redirect(`/artist/search/${artistInput}`);
-      })
-      .catch(err => {
-        console.error(`Error when looking for artist`, err);
-      });
-
+    //     items.length < 1
+    //       ? res.render('index', { artistErrorMessage: 'Artist not found' })
+    //       : res.redirect(`/artist/search/${artistInput}`);
+    //   })
+    //   .catch(err => {
+    //     console.error(`Error when looking for artist`, err);
+    //   });
+    res.render('index', { artistErrorMessage: 'Artist not found' })
     return;
   }
   // res.render('events/artist.hbs', { events, artistInput, artistMBId, countryList, cityList });

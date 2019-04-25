@@ -29,13 +29,21 @@ router.get('/:artistId', async (req, res, next) => {
     const { artistId } = req.params;
     const artistData = await musicBrainz.getArtistInfoById(artistId);
     const artistInfo = await bandsInTown.getArtistInfo(artistData.name);
-    const lastQuery = `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=${artistId}&api_key=f4529f53125ed399f4bee0c8d07d088b&format=json`;
-    const lastReq = await axios.get(lastQuery);
-    const lastInfo = lastReq.data
-    const { artist } = lastInfo;
-    const name = artist.name.toLowerCase();
 
-    res.render('artist/profile.hbs', { artistData, artistInfo, artist, name });
+    const lastFMQuery = `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=${artistId}&api_key=f4529f53125ed399f4bee0c8d07d088b&format=json`;
+    const lastFMReq = await axios.get(lastFMQuery);
+    const lastFMInfo = lastFMReq.data
+
+    const { artist } = lastFMInfo;
+    artist.name = artist.name.toLowerCase();
+
+    const { summary } = artist.bio;
+    const bioIndx = summary.indexOf('<');
+    artist.bio.summary = summary.substr(0, bioIndx);
+
+    artist.tags.tag.forEach(tag => tag.name = tag.name.toLowerCase());
+    
+    res.render('artist/profile.hbs', { artistData, artistInfo, artist});
 });
 
 router.get('/:artistId/spot', (req, res, next) => {

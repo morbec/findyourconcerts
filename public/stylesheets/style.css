@@ -366,6 +366,14 @@ body {
   align-items: center;
   border-bottom: .5px solid black; }
 
+.event-lineup-content a {
+  text-decoration: none;
+  color: black; }
+
+.event-lineup-content a:hover {
+  text-decoration: none;
+  color: slategrey; }
+
 .lineup-band-name {
   display: flex;
   max-width: 100px; }

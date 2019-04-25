@@ -7,37 +7,40 @@
 <div class="details-window">
 
   <div class="profile-band-name">
-    <h1>{{name}}</h1>
+    <h1>{{artist.name}}</h1>
   </div>
 
   <div class="details-container">
 
     <div class="event-profile-container">
 
-      <img class="event-band-img" src="{{artistInfo.image_url}}" alt="band-img">
+      <img class="event-band-img" src="{{lookup artist.image.[2] '#text'}}" alt="band-img">
 
       <div class="event-profile-content">
         <p class="event-datevenue">
-          {{artist.area.name}}
+
         </p>
-        <p class="event-location">On tour placeholder</p>
+        <p class="event-location">{{#each artist.tags.tag}}
+          {{this.name}} |
+          {{/each}}</p>
         <div class="event-profile-btns">
           <button class="btn btn-outline-dark btn-sm">Follow</button>
         </div>
       </div>
     </div>
-    {{artist.image.[0]}}
     <div class="lineup-detailed-container">
 
       <p class="lineup-text">Similar artists: </p>
       <div class="event-lineup-container">
         {{#each artist.similar.artist}}
         <div class="event-lineup-content">
-          <img class="event-lineup-img" src="" alt="">
-          <div class="lineup-band-name">
-            <p>{{this.name}}</p>
-          </div>
+          <a target=_blank href="{{this.url}}">
+            <img class="event-lineup-img" src="{{lookup this.image.[2] '#text'}}" alt="">
+            <div class="lineup-band-name">
+              <p>{{this.name}}</p>
+            </div>
         </div>
+        </a>
         {{/each}}
       </div>
 
@@ -45,13 +48,12 @@
 
         <div class="event-datiled-dateandtime">
           <p>{{artist.bio.summary}}</p>
-          <p>bio placeholder</p>
         </div>
 
-        <div class="event-detailed-venue">
+        {{!-- <div class="event-detailed-venue">
           <p>bio placeholder</p>
           <p class="event-detailed-location">bio placeholder</p>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
