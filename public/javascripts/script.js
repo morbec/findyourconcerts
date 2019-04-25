@@ -16,13 +16,3 @@ const citySelected = () => {
     }
   });
 };
-
-if (document.querySelector('#follow')) {
-  console.log('yay');
-  document.querySelector('#follow').addEventListener('click', () => {
-    const artistName = document.querySelector('#artist').innerHTML;
-    axios
-      .post('http://localhost:3000/events/artist/api', { artistName })
-      .then(result => console.log('result', result));
-  });
-}

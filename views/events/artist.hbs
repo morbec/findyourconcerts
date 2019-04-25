@@ -14,11 +14,14 @@
       <div class="artist-search-btns">
         <a href="/artist/profile/{{artistMBId}}">click for artist profile</a>
         {{#if isAuthenticated}}
-        <button id="follow" class="btn btn-outline-dark btn-sm">follow</button>
         {{#if following}}
-        <button id="follow" class="btn btn-outline-dark btn-sm">following</button>
+        <a href="artist/unfollow/{{artistInput}}">
+          <button id="follow" class="btn btn-outline-dark btn-sm">unfollow</button>
+        </a>
         {{else}}
-        <button id="follow" class="btn btn-outline-dark btn-sm">follow</button>
+        <a href="artist/follow/{{artistInput}}">
+          <button id="follow" class="btn btn-outline-dark btn-sm">follow</button>
+        </a>
         {{/if}}
         {{else}}
         <button disabled id="follow" class="btn btn-outline-dark btn-sm">follow</button>
