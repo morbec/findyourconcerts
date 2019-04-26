@@ -51,10 +51,18 @@ router.post('/', async (req, res, next) => {
     return;
   }
 
-  const isAuthenticated = req.isAuthenticated();
-  const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
   let following = false;
-  if (artistdb) following = true;
+  const isAuthenticated = req.isAuthenticated();
+  if (isAuthenticated) {
+    const { _id } = req.user;
+    const userdb = await User.findById(_id);
+    const { artists } = userdb;
+    for (let i = 0; i < userdb.artists.length; i++) {
+      const artistdb = await Artist.findById(artists[i]);
+      if (artistdb) following = true;
+    }
+  }
+
   res.render('events/artist.hbs', {
     events,
     artistInput,
@@ -75,13 +83,17 @@ router.get('/follow/:artistName', async (req, res, next) => {
         return user;
       })
       .then(user => {
-        Artist.create({
-          name: artistInfo.name,
-          bandsintown_id: artistInfo.id,
-          image_url: artistInfo.image_url,
-          thumb_url: artistInfo.thumb_url,
-          facebook_page_url: artistInfo.facebook_page_url
-        }).then(newArtist => {
+        Artist.findOneAndUpdate(
+          { name: artistInfo.name },
+          {
+            name: artistInfo.name,
+            bandsintown_id: artistInfo.id,
+            image_url: artistInfo.image_url,
+            thumb_url: artistInfo.thumb_url,
+            facebook_page_url: artistInfo.facebook_page_url
+          },
+          { upsert: true }
+        ).then(newArtist => {
           user.artists.push(newArtist._id);
           const _id = user._id;
           const { firstName, lastName, artists } = user;
