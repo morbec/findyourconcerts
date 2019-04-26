@@ -42,6 +42,7 @@ router.get('/:artistId', async (req, res, next) => {
     artist.bio.summary = summary.substr(0, bioIndx);
 
     artist.tags.tag.forEach(tag => tag.name = tag.name.toLowerCase());
+    artist.similar.artist.forEach(artist => artist.name = artist.name.toLowerCase());
 
     const isAuthenticated = req.isAuthenticated();
 

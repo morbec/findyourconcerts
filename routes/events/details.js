@@ -24,6 +24,8 @@ router.get('/:artistInput/:eventId', async (req, res, end) => {
 
     const isAuthenticated = req.isAuthenticated();
 
+    thumbsArr.forEach(artist => artist[0] = artist[0].toLowerCase())
+
     res.render('events/details.hbs', { eventInfo, artistInfo, thumbsArr, isAuthenticated });
 });
 
