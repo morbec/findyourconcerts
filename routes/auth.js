@@ -6,7 +6,7 @@ const passport = require('passport');
 // const zxcvbn = require('zxcvbn');
 
 router.get('/', (req, res, next) => {
-  res.render('auth/index');
+  res.redirect('auth/login');
 });
 
 router.get('/login', (req, res, next) => {
