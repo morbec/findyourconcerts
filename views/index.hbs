@@ -13,12 +13,16 @@
 
     <div class="landing-input-container contaner">
       <form id="artist-landing-form" action="/events/artist" method="POST" class="input-form">
-        <input required type="text" placeholder="look up your artist" name="artistInput" id="artistInput"
-          class="landing-search-input" autocomplete="off" autofocus />
-        {{!-- <button></button> --}}
+        <input required type="text" placeholder="
         {{#if artistErrorMessage}}
         {{artistErrorMessage}}
+        {{else}}
+        look up your artist
         {{/if}}
+        " name="artistInput" id="artistInput"
+          class="landing-search-input" autocomplete="off" autofocus />
+        {{!-- <button></button> --}}
+        
       </form>
 
       <div class="landing-input-container-btns">
