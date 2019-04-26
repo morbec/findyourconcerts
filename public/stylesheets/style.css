@@ -104,9 +104,6 @@ body::-webkit-scrollbar-thumb {
   color: black;
   text-align: center; }
 
-.landing-search-input:active {
-  text-align: center; }
-
 .landing-input-container-btns {
   margin-top: 10px;
   width: 42%;

@@ -1,17 +1,29 @@
 <div class="navbar-container">
-  {{!-- <a class="navbar-link" href="/">home</a>
-  <a class="navbar-link" href="/auth/login">log in</a> --}}
-  {{#if isAuthenticated}}
-    <a class="navbar-link" href="/">home</a>
+  <div class="navbar-home">
+    <a class="navbar-link-search-home" href="/">home</a>
+  </div>
+  <div class="navbar-input-container">
+    <form id="navbar-input-form" action="/events/artist" method="POST">
+      <input required type="text" placeholder="search artist" name="artistInput" id="artistInput"
+        class="navbar-search-input" autocomplete="off" autofocus/>
+      {{#if artistErrorMessage}}
+      {{artistErrorMessage}}
+      {{/if}}
+    </form>
+  </div>
+
+  <div class="nav-links-container">
+    {{#if isAuthenticated}}
     <a class="navbar-link-search-log" href="/logged">profile</a>
-    <a href="/auth/logout" class="navbar-link">log out</a>
+      <a href="/auth/logout" class="navbar-link-search-sign">log out</a>
 
     {{else}}
-    <a class="navbar-link" href="/">home</a>
     <a class="navbar-link-search-log" href="/auth/login">log in</a>
-    <a href="/auth/signup" class="navbar-link">sign up</a>
+    <a href="/auth/signup" class="navbar-link-search-sign">sign up</a>
     {{/if}}
+  </div>
 </div>
+
 
 
 <div class="details-window">
