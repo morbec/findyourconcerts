@@ -1,6 +1,16 @@
 <div class="navbar-container">
-  <a class="navbar-link" href="/">home</a>
-  <a class="navbar-link" href="/auth/login">log in</a>
+  {{!-- <a class="navbar-link" href="/">home</a>
+  <a class="navbar-link" href="/auth/login">log in</a> --}}
+  {{#if isAuthenticated}}
+    <a class="navbar-link" href="/">home</a>
+    <a class="navbar-link-search-log" href="/logged">profile</a>
+    <a href="/auth/logout" class="navbar-link">log out</a>
+
+    {{else}}
+    <a class="navbar-link" href="/">home</a>
+    <a class="navbar-link-search-log" href="/auth/login">log in</a>
+    <a href="/auth/signup" class="navbar-link">sign up</a>
+    {{/if}}
 </div>
 
 

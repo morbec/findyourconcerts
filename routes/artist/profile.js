@@ -42,8 +42,11 @@ router.get('/:artistId', async (req, res, next) => {
     artist.bio.summary = summary.substr(0, bioIndx);
 
     artist.tags.tag.forEach(tag => tag.name = tag.name.toLowerCase());
+
+    const isAuthenticated = req.isAuthenticated();
+
     
-    res.render('artist/profile.hbs', { artistData, artistInfo, artist});
+    res.render('artist/profile.hbs', { artistData, artistInfo, artist, isAuthenticated});
 });
 
 router.get('/:artistId/spot', (req, res, next) => {

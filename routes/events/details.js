@@ -21,7 +21,10 @@ router.get('/:artistInput/:eventId', async (req, res, end) => {
     });
 
     artistInfo.name = artistInfo.name.toLowerCase();
-    res.render('events/details.hbs', { eventInfo, artistInfo, thumbsArr });
+
+    const isAuthenticated = req.isAuthenticated();
+
+    res.render('events/details.hbs', { eventInfo, artistInfo, thumbsArr, isAuthenticated });
 });
 
 module.exports = router;

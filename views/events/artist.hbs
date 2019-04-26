@@ -13,8 +13,14 @@
   </div>
 
   <div class="nav-links-container">
+    {{#if isAuthenticated}}
+    <a class="navbar-link-search-log" href="/logged">profile</a>
+      <a href="/auth/logout" class="navbar-link-search-sign">log out</a>
+
+    {{else}}
     <a class="navbar-link-search-log" href="/auth/login">log in</a>
     <a href="/auth/signup" class="navbar-link-search-sign">sign up</a>
+    {{/if}}
   </div>
 </div>
 

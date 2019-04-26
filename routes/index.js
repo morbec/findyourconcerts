@@ -21,7 +21,8 @@ const getIP = () => {
 /* GET home page */
 router.get('/', (req, res, next) => {
   // getIP();
-  res.render('index');
+  const isAuthenticated = req.isAuthenticated();
+  res.render('index', {isAuthenticated});
 });
 
 module.exports = router;

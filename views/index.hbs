@@ -1,7 +1,17 @@
 <div class="navbar-container-landing">
-  <a class="navbar-link-home navbar-link"  href="/">home</a>
+  {{!-- <a class="navbar-link-home navbar-link" href="/">home</a>
   <a class="navbar-link" href="/auth/signup">sign up</a>
-  <a class="navbar-link" href="/auth/login">log in</a>
+  <a class="navbar-link" href="/auth/login">log in</a> --}}
+  {{#if isAuthenticated}}
+    <a class="navbar-link-home navbar-link" href="/">home</a>
+    <a class="navbar-link-search-log" href="/logged">profile</a>
+    <a href="/auth/logout" class="navbar-link">log out</a>
+
+    {{else}}
+    <a class="navbar-link-home navbar-link" href="/">home</a>
+    <a class="navbar-link-search-log" href="/auth/login">log in</a>
+    <a href="/auth/signup" class="navbar-link">sign up</a>
+    {{/if}}
 </div>
 
 <div class="landing">
@@ -13,12 +23,17 @@
 
     <div class="landing-input-container contaner">
       <form id="artist-landing-form" action="/events/artist" method="POST" class="input-form">
-        <input required type="text" placeholder="look up your artist" name="artistInput" id="artistInput"
-          class="landing-search-input" autocomplete="off" autofocus />
-        {{!-- <button></button> --}}
+
+
+        <input required type="text" placeholder="
         {{#if artistErrorMessage}}
         {{artistErrorMessage}}
+        {{else}}
+        look up your artist
         {{/if}}
+        " name="artistInput" id="artistInput" class="landing-search-input" autocomplete="off" autofocus />
+        {{!-- <button></button> --}}
+
       </form>
 
       <div class="landing-input-container-btns">
