@@ -15,7 +15,8 @@ router.get('/logged', async (req, res, next) => {
       }
     }
 
-    res.render('protected/logged-user', { loggedUser, artistObjs });
+    const isAuthenticated = req.isAuthenticated();
+    res.render('protected/logged-user', { loggedUser, artistObjs, isAuthenticated });
     return;
   }
   res.render('error', { errorMessage: 'This is a protected route' });

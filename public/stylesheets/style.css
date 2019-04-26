@@ -33,6 +33,24 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   color: lightslategrey; }
 
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 0.5px solid #a6adb4;
+  padding: 10px 0; }
+
+.footer a {
+  font-weight: 300;
+  text-decoration: none;
+  color: slategrey;
+  text-align: center; }
+
+.footer a:hover {
+  font-weight: 300;
+  text-decoration: none;
+  color: black; }
+
 /**********************Landing************************/
 .navbar-container-landing {
   display: flex;
@@ -127,11 +145,15 @@ body::-webkit-scrollbar-thumb {
 
 .content-features {
   margin: 100px 0px;
-  font-weight: 300; }
+  font-weight: 300;
+  width: 30%;
+  max-width: 30%; }
 
 .content-about-us {
   margin: 100px 0px;
-  font-weight: 300; }
+  font-weight: 300;
+  width: 30%;
+  max-width: 30%; }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   .landing-logo h1 {

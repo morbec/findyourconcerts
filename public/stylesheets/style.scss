@@ -43,6 +43,27 @@ body::-webkit-scrollbar-thumb {
     color: lightslategrey;
 }
 
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: .5px solid rgb(166, 173, 180);
+    padding: 10px 0;
+}
+
+.footer a {
+    font-weight: 300;
+    text-decoration: none;
+    color: slategrey;
+    text-align: center;
+}
+
+.footer a:hover {
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+}
+
 /**********************Landing************************/
 
 .navbar-container-landing {
@@ -157,11 +178,15 @@ body::-webkit-scrollbar-thumb {
 .content-features {
     margin: 100px 0px;
     font-weight: 300;
+    width: 30%;
+    max-width: 30%;
 }
 
 .content-about-us {
     margin: 100px 0px;
     font-weight: 300;
+    width: 30%;
+    max-width: 30%;
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
