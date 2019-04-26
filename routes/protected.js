@@ -14,7 +14,8 @@ router.get('/logged', async (req, res, next) => {
         artistObjs.push(artistdb);
       }
     }
-    res.render('protected/logged-user', { firstName, lastName, username, artistObjs });
+
+    res.render('protected/logged-user', { loggedUser, artistObjs });
     return;
   }
   res.render('error', { errorMessage: 'This is a protected route' });

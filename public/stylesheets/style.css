@@ -377,14 +377,15 @@ body::-webkit-scrollbar-thumb {
 
 .profile-band-name {
   display: flex;
-  max-width: 25%; }
+  max-width: 25%;
+  justify-content: center;
+  align-items: center; }
 
 .profile-band-name h1 {
   font-weight: 100;
   font-size: 5em;
   padding-left: 20px;
-  margin: 0;
-  margin-top: 20px; }
+  margin: 0; }
 
 .details-window {
   width: 100%;
@@ -614,5 +615,110 @@ body::-webkit-scrollbar-thumb {
     font-size: 0.8em; }
   .city-btn {
     width: 30%; } }
+
+/*****************User Profile**********************/
+.user-profile-name {
+  display: flex;
+  max-width: 25%;
+  flex-direction: column; }
+
+.user-profile-name h1 {
+  font-weight: 100;
+  font-size: 5em;
+  padding-left: 20px;
+  margin: 0; }
+
+.user-profile-name h2 {
+  padding-left: 20px;
+  font-weight: 300;
+  margin: 0; }
+
+.user-window {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.user-details-container {
+  display: flex;
+  width: 90%;
+  max-width: 90%;
+  height: 80%;
+  justify-content: space-evenly;
+  align-items: center; }
+
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  max-width: 25%;
+  height: 80%;
+  max-height: 80%;
+  border-right: 0.5px solid black;
+  border-left: 0.5px solid black; }
+
+.user-img {
+  width: 90%;
+  align-self: center; }
+
+.user-profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%; }
+
+.event-datevenue {
+  margin: 0;
+  padding-left: 5px; }
+
+.event-location {
+  padding-left: 5px;
+  margin: 0;
+  color: slategrey; }
+
+.lineup-detailed-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  max-width: 70%; }
+
+.lineup-text {
+  color: slategrey; }
+
+.event-lineup-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid black; }
+
+.event-lineup-content a {
+  text-decoration: none;
+  color: black; }
+
+.event-lineup-content a:hover {
+  text-decoration: none;
+  color: slategrey; }
+
+.lineup-band-name {
+  display: flex;
+  max-width: 100px;
+  height: 9vh; }
+
+.event-lineup-img {
+  width: 100px; }
+
+.event-detailed-container {
+  margin-top: 15px;
+  font-weight: 500; }
+
+.event-detailed-container p {
+  margin: 0; }
+
+.event-detailed-location {
+  color: slategrey; }
 
 /*# sourceMappingURL=style.css.map */

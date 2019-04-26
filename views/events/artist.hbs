@@ -23,7 +23,13 @@
   <div class="artist-search-header">
 
     <div class="artist-search-name">
-      <h1 id="artist">{{artistInput}}</h1>
+      <h1 id="artist">
+        {{#if artistInput}}
+        {{artistInput}}
+        {{else}}
+        {{artistName}}
+        {{/if}}
+        </h1>
       <div class="artist-search-btns">
         <a href="/artist/profile/{{artistMBId}}">click for artist profile</a>
         {{#if isAuthenticated}}
