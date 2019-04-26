@@ -20,6 +20,7 @@ router.get('/:artistInput/:eventId', async (req, res, end) => {
         return [`${band.name}`, `${band.thumb_url}`];
     });
 
+    artistInfo.name = artistInfo.name.toLowerCase();
     res.render('events/details.hbs', { eventInfo, artistInfo, thumbsArr });
 });
 

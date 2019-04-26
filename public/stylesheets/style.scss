@@ -12,7 +12,6 @@ a {
     color: #00b7ff;
 }
 
-
 body {
     box-sizing: border-box;
     max-width: 100vw;
@@ -21,14 +20,27 @@ body {
 body::-webkit-scrollbar {
     width: 1em;
 }
- 
+
 body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
- 
+
 body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.navbar-link {
+    font-size: 1.6em;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+    padding: 0 40px;
+}
+
+.navbar-link:hover {
+    text-decoration: none;
+    color: lightslategrey;
 }
 
 /**********************Landing************************/
@@ -40,9 +52,6 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 50px;
     border-bottom: 0.5px solid black;
-}
-
-.navbar-link-home {
 }
 
 .landing-container {
@@ -93,17 +102,18 @@ body::-webkit-scrollbar-thumb {
 }
 
 .landing-search-input {
-    background-color: rgba(0, 0, 0, 0.719);
-    // border-radius: 10px;
+    // background-color: rgba(0, 0, 0, 0.719);
+    background-color: transparent;
     border: 0;
     height: 1.2em;
     size: 10em;
-    color: white;
+    color: black;
     font-size: 2.5em;
-    font-weight: 100;
+    font-weight: 500;
     padding-left: 20px;
     padding-top: 2px;
     padding-bottom: 2px;
+    border-bottom: 2px  solid black;
 }
 
 .landing-search-input:focus {
@@ -111,13 +121,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .landing-search-input::placeholder {
-    font-weight: 100;
-    color: rgba(255, 255, 255, 0.808);
+    font-weight: 500;
+    // color: rgba(255, 255, 255, 0.808);
+    color: black;
     text-align: center;
 }
 
-.landing-search-input:focus::-webkit-input-placeholder {
-    // color: transparent;
+.landing-search-input:active {
+    text-align: center;
 }
 
 .landing-input-container-btns {
@@ -130,7 +141,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .landing-input-container-btns button {
-    background-color:transparent
+    background-color: transparent;
 }
 
 .landing-input-container-btns a {
@@ -155,7 +166,6 @@ body::-webkit-scrollbar-thumb {
     margin: 100px 0px;
     font-weight: 300;
 }
-
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
     .landing-logo h1 {
@@ -208,10 +218,6 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-
-
-
-
 /**********************Login************************/
 .navbar-container-login {
     display: flex;
@@ -228,7 +234,6 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     height: 80vh;
     width: 100vw;
-    
 }
 
 .login-title h1 {
@@ -243,7 +248,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
     width: 30%;
-    height: 40%;    
+    height: 40%;
 }
 
 .login-input-form {
@@ -257,7 +262,7 @@ body::-webkit-scrollbar-thumb {
 
 .login-input {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid rgb(178, 184, 190);
     color: black;
     font-size: 2em;
     font-weight: 300;
@@ -266,6 +271,8 @@ body::-webkit-scrollbar-thumb {
 
 .login-input:focus {
     outline: none;
+    border-bottom: 1.5px solid black;
+
 }
 
 .login-input::placeholder {
@@ -277,8 +284,6 @@ body::-webkit-scrollbar-thumb {
     color: transparent;
 }
 
-
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
     .login-input-container {
         width: 70%;
@@ -289,11 +294,6 @@ body::-webkit-scrollbar-thumb {
         font-size: 1.5em;
     }
 }
-
-
-
-
-
 
 /**********************Sign Up************************/
 
@@ -332,7 +332,7 @@ body::-webkit-scrollbar-thumb {
 
 .signup-input {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid rgb(178, 184, 190);
     font-size: 1.8em;
     font-weight: 300;
     text-align: center;
@@ -340,6 +340,7 @@ body::-webkit-scrollbar-thumb {
 
 .signup-input:focus {
     outline: none;
+    border-bottom: 1.5px solid black;
 }
 
 .signup-input::placeholder {
@@ -376,30 +377,95 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-
-
-
-
 /****************************Event Details*****************************/
 
 .navbar-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 7vh;
     border-bottom: 0.5px solid black;
 }
 
-.navbar-link {
-    font-size: 1.8em;
+.navbar-home {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 33%;
+}
+
+.navbar-link-search-home{
+    font-size: 1.6em;
     font-weight: 300;
     text-decoration: none;
     color: black;
-    padding: 0 20px;
+    padding-left: 40px;
 }
 
-.navbar-link:hover {
+.navbar-link-search-home:hover {
+    text-decoration: none;
+    color: lightslategrey;
+}
+
+.navbar-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    // align-self: flex-end;
+}
+
+.navbar-search-input {
+    border: none;
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.7em;
+    text-align: left;
+    width: 70%;
+}
+
+.navbar-search-input:focus {
+    outline: none;
+}
+
+.navbar-search-input::placeholder {
+    font-weight: 300;
+    color: slategrey;
+    text-align: center;
+}
+
+.nav-links-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 33%;
+    height: 7vh;
+    max-height: 7vh;
+}
+
+.navbar-link-search-log{
+    font-size: 1.6em;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+    padding-right: 40px;
+}
+
+.navbar-link-search-log:hover {
+    text-decoration: none;
+    color: lightslategrey;
+}
+
+.navbar-link-search-sign{
+    font-size: 1.6em;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+    padding-right: 40px;
+}
+
+.navbar-link-search-sign:hover {
     text-decoration: none;
     color: lightslategrey;
 }
@@ -409,7 +475,7 @@ body::-webkit-scrollbar-thumb {
     max-width: 25%;
 }
 
-.profile-band-name h1{
+.profile-band-name h1 {
     font-weight: 100;
     font-size: 5em;
     padding-left: 20px;
@@ -503,15 +569,15 @@ body::-webkit-scrollbar-thumb {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-bottom: .5px solid black;
+    border-bottom: 0.5px solid black;
 }
 
-.event-lineup-content a{
+.event-lineup-content a {
     text-decoration: none;
     color: black;
 }
 
-.event-lineup-content a:hover{
+.event-lineup-content a:hover {
     text-decoration: none;
     color: slategrey;
 }
@@ -531,7 +597,7 @@ body::-webkit-scrollbar-thumb {
     font-weight: 500;
 }
 
-.event-detailed-container p{
+.event-detailed-container p {
     margin: 0;
 }
 
@@ -543,7 +609,6 @@ body::-webkit-scrollbar-thumb {
     .details-window {
         flex-direction: column;
     }
-
 
     .details-container {
         flex-direction: column;
@@ -569,7 +634,7 @@ body::-webkit-scrollbar-thumb {
         margin-top: 10px;
         max-width: 60%;
     }
-    
+
     .event-profile-btns a {
         margin-top: 10px;
         max-width: 60%;
@@ -583,15 +648,11 @@ body::-webkit-scrollbar-thumb {
         width: 100%;
     }
 
-    .event-detailed-container {}
+    .event-detailed-container {
+    }
 }
 
-
-
-
 /**************************Events Search Result****************************************/
-
-
 
 .search-result-container {
     width: 100%;
@@ -608,21 +669,20 @@ body::-webkit-scrollbar-thumb {
     padding-left: 10px;
 }
 
-.artist-search-name h1{
+.artist-search-name h1 {
     font-weight: 300;
     font-size: 5em;
     padding-left: 3px;
 }
 
-.artist-search-name a{
+.artist-search-name a {
     text-decoration: none;
     color: slategray;
     margin-left: 5px;
     padding-left: 3px;
-
 }
 
-.artist-search-name a:hover{
+.artist-search-name a:hover {
     text-decoration: none;
     color: black;
 }
@@ -657,11 +717,11 @@ body::-webkit-scrollbar-thumb {
     justify-content: space-between;
     width: 60%;
     align-items: center;
-    border-bottom: .5px solid black;
+    border-bottom: 0.5px solid black;
     padding: 20px 0;
 }
 
-.event-container p{
+.event-container p {
     margin: 0;
 }
 
@@ -676,7 +736,7 @@ body::-webkit-scrollbar-thumb {
 
 .event-container-month {
     font-weight: 700;
-    font-size: .8em;
+    font-size: 0.8em;
 }
 
 .event-container-venue {
@@ -691,10 +751,9 @@ body::-webkit-scrollbar-thumb {
     padding-left: 20px;
 }
 
-.event-detail-btn{
+.event-detail-btn {
     width: 25%;
     text-align: right;
-    
 }
 
 .event-detail-btn a {
@@ -710,11 +769,9 @@ body::-webkit-scrollbar-thumb {
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
     .event-container {
         width: 80%;
-        font-size: .8em;
+        font-size: 0.8em;
     }
     .city-btn {
         width: 30%;
     }
 }
-
-

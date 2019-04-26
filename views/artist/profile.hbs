@@ -1,6 +1,6 @@
 <div class="navbar-container">
   <a class="navbar-link" href="/">home</a>
-  <a class="navbar-link" href="/auth/login">log In</a>
+  <a class="navbar-link" href="/auth/login">log in</a>
 </div>
 
 
@@ -14,7 +14,7 @@
 
     <div class="event-profile-container">
 
-      <img class="event-band-img" src="{{lookup artist.image.[2] '#text'}}" alt="band-img">
+      <img class="event-band-img" src="{{lookup artist.image.[5] '#text'}}" alt="band-img">
 
       <div class="event-profile-content">
         <p class="event-datevenue">
@@ -35,7 +35,7 @@
         {{#each artist.similar.artist}}
         <div class="event-lineup-content">
           <a target=_blank href="{{this.url}}">
-            <img class="event-lineup-img" src="{{lookup this.image.[2] '#text'}}" alt="">
+            <img class="event-lineup-img" src="{{lookup this.image.[2] '#text'}}" alt="band-pic">
             <div class="lineup-band-name">
               <p>{{this.name}}</p>
             </div>

@@ -22,6 +22,17 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey; }
 
+.navbar-link {
+  font-size: 1.6em;
+  font-weight: 300;
+  text-decoration: none;
+  color: black;
+  padding: 0 40px; }
+
+.navbar-link:hover {
+  text-decoration: none;
+  color: lightslategrey; }
+
 /**********************Landing************************/
 .navbar-container-landing {
   display: flex;
@@ -73,23 +84,27 @@ body::-webkit-scrollbar-thumb {
   align-items: center; }
 
 .landing-search-input {
-  background-color: rgba(0, 0, 0, 0.719);
+  background-color: transparent;
   border: 0;
   height: 1.2em;
   size: 10em;
-  color: white;
+  color: black;
   font-size: 2.5em;
-  font-weight: 100;
+  font-weight: 500;
   padding-left: 20px;
   padding-top: 2px;
-  padding-bottom: 2px; }
+  padding-bottom: 2px;
+  border-bottom: 2px  solid black; }
 
 .landing-search-input:focus {
   outline: none; }
 
 .landing-search-input::placeholder {
-  font-weight: 100;
-  color: rgba(255, 255, 255, 0.808);
+  font-weight: 500;
+  color: black;
+  text-align: center; }
+
+.landing-search-input:active {
   text-align: center; }
 
 .landing-input-container-btns {
@@ -191,14 +206,15 @@ body::-webkit-scrollbar-thumb {
 
 .login-input {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1.5px solid #b2b8be;
   color: black;
   font-size: 2em;
   font-weight: 300;
   text-align: center; }
 
 .login-input:focus {
-  outline: none; }
+  outline: none;
+  border-bottom: 1.5px solid black; }
 
 .login-input::placeholder {
   font-weight: 100;
@@ -246,13 +262,14 @@ body::-webkit-scrollbar-thumb {
 
 .signup-input {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1.5px solid #b2b8be;
   font-size: 1.8em;
   font-weight: 300;
   text-align: center; }
 
 .signup-input:focus {
-  outline: none; }
+  outline: none;
+  border-bottom: 1.5px solid black; }
 
 .signup-input::placeholder {
   font-weight: 100;
@@ -283,20 +300,78 @@ body::-webkit-scrollbar-thumb {
 /****************************Event Details*****************************/
 .navbar-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: 7vh;
   border-bottom: 0.5px solid black; }
 
-.navbar-link {
-  font-size: 1.8em;
+.navbar-home {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 33%; }
+
+.navbar-link-search-home {
+  font-size: 1.6em;
   font-weight: 300;
   text-decoration: none;
   color: black;
-  padding: 0 20px; }
+  padding-left: 40px; }
 
-.navbar-link:hover {
+.navbar-link-search-home:hover {
+  text-decoration: none;
+  color: lightslategrey; }
+
+.navbar-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%; }
+
+.navbar-search-input {
+  border: none;
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.7em;
+  text-align: left;
+  width: 70%; }
+
+.navbar-search-input:focus {
+  outline: none; }
+
+.navbar-search-input::placeholder {
+  font-weight: 300;
+  color: slategrey;
+  text-align: center; }
+
+.nav-links-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 33%;
+  height: 7vh;
+  max-height: 7vh; }
+
+.navbar-link-search-log {
+  font-size: 1.6em;
+  font-weight: 300;
+  text-decoration: none;
+  color: black;
+  padding-right: 40px; }
+
+.navbar-link-search-log:hover {
+  text-decoration: none;
+  color: lightslategrey; }
+
+.navbar-link-search-sign {
+  font-size: 1.6em;
+  font-weight: 300;
+  text-decoration: none;
+  color: black;
+  padding-right: 40px; }
+
+.navbar-link-search-sign:hover {
   text-decoration: none;
   color: lightslategrey; }
 
@@ -385,7 +460,7 @@ body::-webkit-scrollbar-thumb {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  border-bottom: .5px solid black; }
+  border-bottom: 0.5px solid black; }
 
 .event-lineup-content a {
   text-decoration: none;
@@ -397,7 +472,8 @@ body::-webkit-scrollbar-thumb {
 
 .lineup-band-name {
   display: flex;
-  max-width: 100px; }
+  max-width: 100px;
+  height: 9vh; }
 
 .event-lineup-img {
   width: 100px; }
@@ -492,7 +568,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
   width: 60%;
   align-items: center;
-  border-bottom: .5px solid black;
+  border-bottom: 0.5px solid black;
   padding: 20px 0; }
 
 .event-container p {
@@ -508,7 +584,7 @@ body::-webkit-scrollbar-thumb {
 
 .event-container-month {
   font-weight: 700;
-  font-size: .8em; }
+  font-size: 0.8em; }
 
 .event-container-venue {
   text-align: left;
@@ -535,7 +611,7 @@ body::-webkit-scrollbar-thumb {
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
   .event-container {
     width: 80%;
-    font-size: .8em; }
+    font-size: 0.8em; }
   .city-btn {
     width: 30%; } }
 
