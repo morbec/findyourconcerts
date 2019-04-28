@@ -11,36 +11,25 @@
       {{/if}}
     </form>
   </div>
-
   <div class="nav-links-container">
     {{#if isAuthenticated}}
     <a class="navbar-link-search-log" href="/logged">profile</a>
       <a href="/auth/logout" class="navbar-link-search-sign">log out</a>
-
     {{else}}
     <a class="navbar-link-search-log" href="/auth/login">log in</a>
     <a href="/auth/signup" class="navbar-link-search-sign">sign up</a>
     {{/if}}
   </div>
 </div>
-
-
-
 <div class="details-window">
-
   <div class="profile-band-name">
     <h1>{{artist.name}}</h1>
   </div>
-
   <div class="details-container">
-
     <div class="event-profile-container">
-
       <img class="event-band-img" src="{{lookup artist.image.[5] '#text'}}" alt="band-img">
-
       <div class="event-profile-content">
         <p class="event-datevenue">
-
         </p>
         <p class="event-location">{{#each artist.tags.tag}}
           {{this.name}} |
@@ -51,7 +40,6 @@
       </div>
     </div>
     <div class="lineup-detailed-container">
-
       <p class="lineup-text">similar artists </p>
       <div class="event-lineup-container">
         {{#each artist.similar.artist}}
@@ -65,13 +53,11 @@
         </a>
         {{/each}}
       </div>
-
       <div class="event-detailed-container">
 
         <div class="event-datiled-dateandtime">
           <p>{{artist.bio.summary}}</p>
         </div>
-
         {{!-- <div class="event-detailed-venue">
           <p>bio placeholder</p>
           <p class="event-detailed-location">bio placeholder</p>

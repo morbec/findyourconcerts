@@ -3,26 +3,20 @@
   <a class="navbar-link" href="/auth/signup">sign up</a>
   <a class="navbar-link" href="/auth/login">log in</a> --}}
   {{#if isAuthenticated}}
-    <a class="navbar-link" href="/logged">profile</a>
-    <a href="/auth/logout" class="navbar-link">log out</a>
-
-    {{else}}
-    <a class="navbar-link" href="/auth/login">log in</a>
-    <a href="/auth/signup" class="navbar-link">sign up</a>
-    {{/if}}
+  <a class="navbar-link" href="/logged">profile</a>
+  <a href="/auth/logout" class="navbar-link">log out</a>
+  {{else}}
+  <a class="navbar-link" href="/auth/login">log in</a>
+  <a href="/auth/signup" class="navbar-link">sign up</a>
+  {{/if}}
 </div>
-
 <div class="landing">
-
   <div class="landing-container">
     <div class="landing-logo">
       <h1>find your concerts</h1>
     </div>
-
     <div class="landing-input-container contaner">
       <form id="artist-landing-form" action="/events/artist" method="POST" class="input-form">
-
-
         <input required type="text" placeholder="
         {{#if artistErrorMessage}}
         {{artistErrorMessage}}
@@ -30,19 +24,12 @@
         look up your artist
         {{/if}}
         " name="artistInput" id="artistInput" class="landing-search-input" autocomplete="off" autofocus />
-        {{!-- <button></button> --}}
-
       </form>
-
       <div class="landing-input-container-btns">
         <a href="/auth/login" class="btn btn-dark btn-lg"><span id="transp">log in</span></a>
         <a href="/auth/signup" class="btn btn-dark btn-lg">sign up</a>
       </div>
-
-
-
     </div>
-
   </div>
   <div class="content">
     <div class="content-features">
@@ -51,23 +38,20 @@
     </div>
     <div class="content-about-us">
       <h2>about us</h2>
-      <p>we intend to provide a minimalist experience for the concert seeker user without overwhelming them with useless features.</p>
+      <p>we intend to provide a minimalist experience for the concert seeker user without overwhelming them with useless
+        features.</p>
     </div>
   </div>
 </div>
-
 <div class="footer">
   <div>
-
-  <a href="/">privacy policy</a>
+    <a href="/">privacy policy</a>
   </div>
   <div>
-
-  <a href="/">sitemap</a>
+    <a href="/">sitemap</a>
   </div>
   <div>
-
-  <a href="/">© fj studios</a>
+    <a href="/">© fj studios</a>
   </div>
 </div>
 

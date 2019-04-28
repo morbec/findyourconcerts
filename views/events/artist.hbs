@@ -5,7 +5,7 @@
   <div class="navbar-input-container">
     <form id="navbar-input-form" action="/events/artist" method="POST">
       <input required type="text" placeholder="search artist" name="artistInput" id="artistInput"
-        class="navbar-search-input" autocomplete="off" autofocus/>
+        class="navbar-search-input" autocomplete="off" autofocus />
       {{#if artistErrorMessage}}
       {{artistErrorMessage}}
       {{/if}}
@@ -15,7 +15,7 @@
   <div class="nav-links-container">
     {{#if isAuthenticated}}
     <a class="navbar-link-search-log" href="/logged">profile</a>
-      <a href="/auth/logout" class="navbar-link-search-sign">log out</a>
+    <a href="/auth/logout" class="navbar-link-search-sign">log out</a>
 
     {{else}}
     <a class="navbar-link-search-log" href="/auth/login">log in</a>
@@ -27,7 +27,6 @@
 <div class="search-result-container">
 
   <div class="artist-search-header">
-
     <div class="artist-search-name">
       <h1 id="artist">
         {{#if artistInput}}
@@ -35,7 +34,7 @@
         {{else}}
         {{artistName}}
         {{/if}}
-        </h1>
+      </h1>
       <div class="artist-search-btns">
         <a href="/artist/profile/{{artistMBId}}">click for artist profile</a>
         {{#if isAuthenticated}}
@@ -53,7 +52,6 @@
         {{/if}}
       </div>
     </div>
-
     <div class="artist-search-select">
       <label for="city-selection"></label>
       <select name="city-selection" id="city-selection" onchange="citySelected()" class="custom-select-sm city-btn">
@@ -64,12 +62,9 @@
       </select>
     </div>
   </div>
-
   <div class="artist-search-container">
-
     {{#each events}}
     <div class="event-container">
-
       <div class="event-container-date">
         <p class="event-container-month">{{this.formattedDate.[0]}}</p>
         <p class="event-container-day">{{this.formattedDate.[1]}}</p>

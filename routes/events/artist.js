@@ -3,186 +3,140 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const User = require('../../models/user');
-const Artist = require('../../models/artist');
 const BITAPIHandler = require('../../api/BITAPIHandler');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const bandsInTown = new BITAPIHandler(`${process.env.BASE_URL}`, `${process.env.BANDS_IN_TOWN_APP_ID}`);
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: `${process.env.SPOTIFY_CLIENT_ID}`,
-    clientSecret: `${process.env.SPOTIFY_CLIENT_SECRET}`,
-    redirectUri: 'http://localhost:3000/'
+  clientId: `${process.env.SPOTIFY_CLIENT_ID}`,
+  clientSecret: `${process.env.SPOTIFY_CLIENT_SECRET}`,
+  redirectUri: 'http://localhost:3000/'
 });
 
 spotifyApi
-    .clientCredentialsGrant()
-    .then(data => {
-        spotifyApi.setAccessToken(data.body['access_token']);
-    })
-    .catch(error => {
-        console.error('Something went wrong when retrieving an access token', error);
-    });
+  .clientCredentialsGrant()
+  .then(data => {
+    spotifyApi.setAccessToken(data.body['access_token']);
+  })
+  .catch(error => {
+    console.error('Something went wrong when retrieving an access token', error);
+  });
 
 router.get('/', (req, res, next) => {});
 
 router.post('/', async (req, res, next) => {
-    const { artistInput } = req.body;
+  const { artistInput } = req.body;
 
-    const events = await bandsInTown.getArtistEvents(artistInput);
-    const artistInfo = await bandsInTown.getArtistInfo(artistInput);
-    const artistMBId = artistInfo.mbid;
-    const { cityList, countryList } = events;
+  const events = await bandsInTown.getArtistEvents(artistInput);
+  const artistInfo = await bandsInTown.getArtistInfo(artistInput);
+  const artistMBId = artistInfo.mbid;
+  const { cityList, countryList } = events;
 
-    if (!events || events.length === 0 || events === 'undefined') {
-        res.render('index', { artistErrorMessage: 'event not found' });
-        return;
-    }
+  if (!events || events.length === 0 || events === 'undefined') {
+    res.render('index', { artistErrorMessage: 'event not found' });
+    return;
+  }
 
-    let following = false;
-    const isAuthenticated = req.isAuthenticated();
-    if (isAuthenticated) {
-        const { _id } = req.user;
-        const userdb = await User.findById(_id);
-        const { artists } = userdb;
-        for (let i = 0; i < userdb.artists.length; i++) {
-            const artistdb = await Artist.findById(artists[i]);
-            if (artistdb) following = true;
-        }
-    }
+  let following = false;
+  const isAuthenticated = req.isAuthenticated();
+  if (isAuthenticated) {
+    const { _id } = req.user;
+    const userdb = await User.findById(_id);
+    following = userdb.artists.find(artist => artist.id === artistInfo.id);
+  }
 
-    res.render('events/artist.hbs', {
-        events,
-        artistInput,
-        artistMBId,
-        countryList,
-        cityList,
-        isAuthenticated,
-        following
-    });
+  res.render('events/artist.hbs', {
+    events,
+    artistInput,
+    artistMBId,
+    countryList,
+    cityList,
+    isAuthenticated,
+    following
+  });
 });
 
 router.get('/follow/:artistName', async (req, res, next) => {
-    if (req.isAuthenticated()) {
-        const { artistName } = req.params;
-        const artistInfo = await bandsInTown.getArtistInfo(artistName);
-        User.findOne({ _id: `${req.user._id}` })
-            .then(user => {
-                return user;
-            })
-            .then(user => {
-                Artist.findOneAndUpdate(
-                    { name: artistInfo.name },
-                    {
-                        name: artistInfo.name,
-                        bandsintown_id: artistInfo.id,
-                        image_url: artistInfo.image_url,
-                        thumb_url: artistInfo.thumb_url,
-                        facebook_page_url: artistInfo.facebook_page_url
-                    },
-                    { upsert: true }
-                ).then(newArtist => {
-                    user.artists.push(newArtist._id);
-                    const _id = user._id;
-                    const { firstName, lastName, artists } = user;
-                    User.findOneAndUpdate({ _id }, { firstName, lastName, artists })
-                        .then(() => this)
-                        .catch(err => err);
-                });
-            })
-            .catch(err => {
-                console.error('ERROR: ', err);
-            });
-        // FIXME: Should redirect back to the previous page or user list of artists
-        // res.redirect('/');
-        const events = await bandsInTown.getArtistEvents(artistName);
-        const artistMBId = artistInfo.mbid;
-        const { cityList, countryList } = events;
-
-        // if (!events || events.length === 0 || events === 'undefined') {
-        //     res.render('index', { artistErrorMessage: 'event not found' });
-        //     return;
-        // }
-
-        let following = false;
-        const isAuthenticated = req.isAuthenticated();
-        if (isAuthenticated) {
-            const { _id } = req.user;
-            const userdb = await User.findById(_id);
-            const { artists } = userdb;
-            for (let i = 0; i < userdb.artists.length; i++) {
-                const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
-                if (artistdb && artistdb.name === artistInfo.name) {
-                    following = true;
-                }
-            }
+  const isAuthenticated = req.isAuthenticated();
+  if (isAuthenticated) {
+    let following = false;
+    const { artistName } = req.params;
+    const artistInfo = await bandsInTown.getArtistInfo(artistName);
+    User.findOne({ _id: `${req.user._id}` })
+      .then(user => {
+        if (!user.artists.find(artist => artist.id === artistInfo.id)) {
+          user.artists.push(artistInfo);
+          user.save(err => {
+            if (err) console.error('ERROR: ', err);
+            following = true;
+          });
         }
+      })
+      .catch(err => {
+        console.error('ERROR: ', err);
+      });
 
-        res.render('events/artist.hbs', {
-            events,
-            artistName,
-            artistMBId,
-            countryList,
-            cityList,
-            isAuthenticated,
-            following
-        });
-    }
+    const events = await bandsInTown.getArtistEvents(artistName);
+    const artistMBId = artistInfo.mbid;
+    const { cityList, countryList } = events;
+
+    res.render('events/artist.hbs', {
+      events,
+      artistName,
+      artistMBId,
+      countryList,
+      cityList,
+      isAuthenticated,
+      following
+    });
+  }
 });
 
 router.get('/unfollow/:artistName', async (req, res, next) => {
-    if (req.isAuthenticated()) {
-        const { artistName } = req.params;
-        const artistInfo = await bandsInTown.getArtistInfo(artistName);
+  if (req.isAuthenticated()) {
+    const { artistName } = req.params;
+    const artistInfo = await bandsInTown.getArtistInfo(artistName);
 
-        const userdb = await User.findByIdAndUpdate({
-            _id: req.user._id
-        });
-        const artistdb = await Artist.findOne({
-            bandsintown_id: artistInfo.id
-        });
-        //result = words.filter(w => w !== 'elite')
-        let index = userdb.artists.indexOf(artistdb._id);
-        userdb.artists.splice(index);
-        await userdb.save();
-        await Artist.findOneAndDelete({
-            _id: artistdb._id
-        });
-        // FIXME: Should redirect back to the previous page or user list of artists
-        // res.redirect('/');
-        const events = await bandsInTown.getArtistEvents(artistName);
-        const artistMBId = artistInfo.mbid;
-        const { cityList, countryList } = events;
+    const userdb = await User.findByIdAndUpdate({
+      _id: req.user._id
+    });
 
-        // if (!events || events.length === 0 || events === 'undefined') {
-        //     res.render('index', { artistErrorMessage: 'event not found' });
-        //     return;
-        // }
+    let following = true;
+    const index = userdb.artists.reduce((acc, artist, idx) => {
+      if (artist.id === artistInfo.id) acc = idx;
+      return acc;
+    }, -1);
 
-        let following = false;
-        const isAuthenticated = req.isAuthenticated();
-        if (isAuthenticated) {
-            const { _id } = req.user;
-            const userdb = await User.findById(_id);
-            const { artists } = userdb;
-            for (let i = 0; i < userdb.artists.length; i++) {
-                const artistdb = await Artist.findOne({ bandsintown_id: artistInfo.id });
-                if (artistdb && artistdb.name === artistInfo.name) {
-                    following = true;
-                }
-            }
-        }
-
-        res.render('events/artist.hbs', {
-            events,
-            artistName,
-            artistMBId,
-            countryList,
-            cityList,
-            isAuthenticated,
-            following
-        });
+    if (index >= 0) {
+      userdb.artists.splice(index, 1);
+      userdb.save(err => {
+        if (err) console.error('ERROR: ', err);
+        following = false;
+      });
     }
+
+    // used for reloading the page
+    const events = await bandsInTown.getArtistEvents(artistName);
+    const artistMBId = artistInfo.mbid;
+    const { cityList, countryList } = events;
+
+    // if (!events || events.length === 0 || events === 'undefined') {
+    //     res.render('index', { artistErrorMessage: 'event not found' });
+    //     return;
+    // }
+
+    const isAuthenticated = req.isAuthenticated();
+    res.render('events/artist.hbs', {
+      events,
+      artistName,
+      artistMBId,
+      countryList,
+      cityList,
+      isAuthenticated,
+      following
+    });
+  }
 });
 
 module.exports = router;

@@ -22,10 +22,31 @@ const userSchema = new Schema({
   displayName: {
     type: String
   },
-  artists: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Artist'
-  },
+  artists: [
+    {
+      name: {
+        type: String,
+        required: true
+      },
+      id: {
+        type: String,
+        required: true,
+        unique: true
+      },
+      image_url: {
+        type: String
+      },
+      thumb_url: {
+        type: String
+      },
+      facebook_page_url: {
+        type: String
+      },
+      spotify_id: {
+        type: String
+      }
+    }
+  ],
   role: {
     type: String,
     enum: ['user', 'admin'],
