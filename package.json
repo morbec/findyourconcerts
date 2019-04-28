@@ -17,6 +17,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "DEBUG=findyourconcerts:* nodemon ./bin/www",
+    "dev-local": "DEBUG=findyourconcerts:* nodemon ./bin/www localdb",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {

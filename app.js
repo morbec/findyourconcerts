@@ -23,8 +23,13 @@ mongoose.set('useCreateIndex', true);
 // Fix mongoose DeprecationWarning
 mongoose.set('useFindAndModify', false);
 
+let dbURI = process.env.MONGODB_URI;
+if (process.argv.includes('localdb')) {
+  dbURI = process.env.MONGODB;
+}
+
 mongoose
-  .connect(`${process.env.MONGODB_URI}`, { useNewUrlParser: true })
+  .connect(dbURI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
