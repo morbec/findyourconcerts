@@ -1,6 +1,18 @@
 {
   "name": "findyourconcerts",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "find concerts of your favorite artists",
+  "homepage": "https://find-your-concerts.herokuapp.com/",
+  "license": "MIT",
+  "keywords": [
+    "concerts",
+    "shows",
+    "artists"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morbec/findyourconcerts.git"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
